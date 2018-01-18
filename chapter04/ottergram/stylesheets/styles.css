@@ -29,6 +29,9 @@ a {
 .thumbnail-list {
   list-style: none;
   padding: 0;
+
+  white-space: nowrap;
+  overflow-x: auto;
 }
 
 .thumbnail-item + .thumbnail-item {
@@ -36,7 +39,9 @@ a {
 }
 
 .thumbnail-item {
-  display: block;
+  /* display: block; */
+  display: inline-block;
+  width: 120px;
   border: 1px solid rgb(100%, 100%, 100%);
   border: 1px solid rgba(100%, 100%, 100%, 0.8);
 }
@@ -55,4 +60,8 @@ a {
   color: rgb(202, 238, 255);
 
   font-size: 18px;
+}
+
+.detail-image {
+  width: 90%;
 }
