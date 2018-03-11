@@ -19,9 +19,17 @@
 
   // formHandler.addSubmitHandler(myTruck.createOrder.bind(myTruck));
   formHandler.addSubmitHandler(function(data) {
-    myTruck.createOrder.call(myTruck, data);
-    checkList.addRow.call(checkList, data);
+    return myTruck.createOrder.call(myTruck, data)
+      .then(function() {
+        checkList.addRow.call(checkList, data);
+      } //,
+      // function() {
+      //   alert('Server unreachable. Try again later.') ;
+      // }
+    );
   });
   console.log(formHandler);
   formHandler.addInputHandler(Validation.isCompanyEmail);
+
+  myTruck.printOrders(checkList.addRow.bind(checkList));
 })(window);

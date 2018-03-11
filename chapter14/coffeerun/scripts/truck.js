@@ -17,13 +17,19 @@
     return this.db.remove(customerId);
   };
 
-  Truck.prototype.printOrders = function() {
-    var customerIdArray = Object.keys(this.db.getAll());
+  Truck.prototype.printOrders = function(printFn) {
+    return this.db.getAll()
+      .then(function(orders) {
+        var customerIdArray = Object.keys(/* this.db.getAll() */ orders);
 
-    console.log('Truck #' + this.truckId + ' has pending orders:');
-    customerIdArray.forEach(function(id) {
-      console.log(this.db.get(id));
-    }.bind(this));
+        console.log('Truck #' + this.truckId + ' has pending orders:');
+        customerIdArray.forEach(function(id) {
+          console.log(/* this.db.get(id) */ orders[id]);
+          if (printFn) {
+            printFn(orders[id]);
+          }
+        }.bind(this));
+      }.bind(this));
   };
 
   App.Truck = Truck;
