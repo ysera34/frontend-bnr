@@ -3,4 +3,5 @@ class ChapApp {
     console.log('Hello ES6!');
   }
 }
-new ChapApp();
+
+export default ChapApp;
